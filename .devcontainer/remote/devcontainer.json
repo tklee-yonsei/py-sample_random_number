@@ -1,0 +1,20 @@
+{
+    "name": "Python Random Number Generator",
+    "context": "../..",
+    "dockerFile": "../../Dockerfile",
+    "extensions": [
+        "ms-python.python",
+        "ms-azuretools.vscode-docker"
+    ],
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "runArgs": [
+        "--init",
+        "--rm",
+        "-v",
+        "${localWorkspaceFolder}:/app",
+        "--label", "devcontainer=py-sample_random_number"
+    ],
+    "workspaceFolder": "/app"
+}

@@ -1,0 +1,94 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "원격으로 배포하기",
+            "type": "shell",
+            "command": "rsync",
+            "args": [
+                "-avz",
+                "--delete",
+                "-e",
+                "ssh -p 8027",
+                "${workspaceFolder}/",
+                "tklee@navis3.iptime.org:/home/tklee/py-sample_random_number/"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "detail": "원격 서버에 코드를 배포합니다."
+        },
+        {
+            "label": "원격으로부터 가져오기",
+            "type": "shell",
+            "command": "rsync",
+            "args": [
+                "-avz",
+                "--delete",
+                "-e",
+                "ssh -p 8027",
+                "tklee@navis3.iptime.org:/home/tklee/py-sample_random_number/",
+                "${workspaceFolder}/"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "detail": "원격 서버에서 로컬로 코드를 가져옵니다."
+        },
+        {
+            "label": "원격으로 배포 및 실행",
+            "type": "shell",
+            "command": "./deploy_and_run.sh",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "detail": "원격 서버에 코드를 배포하고, 원격 서버의 Docker 컨테이너에서 코드를 실행합니다."
+        },
+        {
+            "label": "원격 컨테이너 종료",
+            "type": "shell",
+            "command": "ssh",
+            "args": [
+                "-p", "8027",
+                "tklee@navis3.iptime.org",
+                "docker ps -q -f label=devcontainer=py-sample_random_number | xargs -r docker stop && docker ps -a -q -f label=devcontainer=py-sample_random_number | xargs -r docker rm"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "detail": "원격 서버에서 실행 중인 Docker 컨테이너를 종료합니다."
+        }
+    ]
+}
