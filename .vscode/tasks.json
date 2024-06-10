@@ -69,6 +69,28 @@
             "detail": "원격 서버에 코드를 배포하고, 원격 서버의 Docker 컨테이너에서 코드를 실행합니다."
         },
         {
+            "label": "원격으로 배포 및 실행 - 윈도우",
+            "type": "shell",
+            "command": "wsl",
+            "args": [
+                "bash",
+                "-c",
+                "'/c/Users/blivm/workspace/code_study/aimimo/py-sample_random_number/deploy_and_run_win.sh'"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "detail": "원격 서버에 코드를 배포하고, 원격 서버의 Docker 컨테이너에서 코드를 실행합니다."
+        },
+        {
             "label": "원격 컨테이너 종료",
             "type": "shell",
             "command": "ssh",
